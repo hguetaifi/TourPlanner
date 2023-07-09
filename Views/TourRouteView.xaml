@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="TourPlanner.Views.TourRouteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TourPlanner.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image Source="{Binding Parent.SelectedTour.Target.RouteInformation}" Grid.Row="0" Stretch="Fill" MaxHeight="250" />
+
+        <Grid Margin="5" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Background="Blue" CornerRadius="10" Grid.Column="0">
+                <Label Content="Tour Logs" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
+            </Border>
+
+            <Button Grid.Column="2" Content="+" Command="{Binding AddTourLogCommand}" Foreground="White" BorderBrush="Blue" 
+                    Width="20" Height="20"  Padding="0, -5, 0, 0"
+                    FontSize="20" Margin="0,0,0,-6" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                    Background="Blue">
+            </Button>
+        </Grid>
+
+        <Border BorderBrush="Blue" BorderThickness="3" Grid.Row="2" Margin="5,-5,5,5">
+            <DataGrid ItemsSource="{Binding Parent.ToursLogs}" AutoGenerateColumns="False" AlternationCount="2" IsReadOnly="True">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="Green"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu>
+                                    <MenuItem Header="Edit" Command="{Binding EditTourLogCommand}"/>
+                                    <MenuItem Header="Delete" Command="{Binding DeleteTourLogCommand}"/>
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Target.Date}" Width="*" />
+                    <DataGridTextColumn Header="Comment" Binding="{Binding Target.Comment}" Width="*" />
+                    <DataGridTextColumn Header="Difficulty" Binding="{Binding Target.Difficulty}" Width="*" />
+                    <DataGridTextColumn Header="Total Time" Binding="{Binding Target.TotalTime}" Width="*" />
+                    <DataGridTextColumn Header="Rating" Binding="{Binding Target.Rating}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </Grid>
+
+</UserControl>

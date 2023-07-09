@@ -1,0 +1,87 @@
+﻿<Window x:Class="TourPlanner.Views.AddTourWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TourPlanner.Views"
+        mc:Ignorable="d"
+        Title="Add Tour" Height="550" Width="500">
+
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0,5" />
+        </Style>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Name" Grid.Row="0" />
+            <TextBox Text="{Binding Target.Name}" Grid.Row="1" />
+
+            <Label Content="Description" Grid.Row="2" />
+            <TextBox Text="{Binding Target.Description}" Grid.Row="3" />
+
+            <Label Content="From" Grid.Row="4" />
+            <TextBox Text="{Binding Target.From}" Grid.Row="5" />
+
+            <Label Content="To" Grid.Row="6" />
+            <TextBox Text="{Binding Target.To}" Grid.Row="7" />
+
+            <Label Content="Transport Type" Grid.Row="8" />
+            <ComboBox ItemsSource="{Binding TransportTypes}" 
+                  SelectedItem="{Binding Target.TransportType}" 
+                  Grid.Row="9" />
+
+            <Label Content="Distance" Grid.Row="10" />
+            <TextBox Text="{Binding Target.Distance, Mode=TwoWay}" IsEnabled="False" IsReadOnly="True" Grid.Row="11" />
+
+            <Label Content="Estimated Time" Grid.Row="12" />
+            <TextBox Text="{Binding Target.EstimatedTime, Mode=TwoWay}" IsEnabled="False" IsReadOnly="True" Grid.Row="13" />
+
+            <Label Content="Route Information" Grid.Row="14" />
+            <TextBox Text="{Binding Target.RouteInformation, Mode=TwoWay}" IsEnabled="False" IsReadOnly="True" Grid.Row="15" />
+
+            <Button x:Name="AddEditTourButton" Content="Add Tour" Command="{Binding SaveTourCommand }" Grid.Row="16" Margin="0, 5, 0, 0" />
+
+        </Grid>
+
+        <Grid Background="Transparent" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Rectangle Fill="#80000000"/>
+            <ProgressBar IsIndeterminate="True" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        
+    </Grid>
+
+</Window>
