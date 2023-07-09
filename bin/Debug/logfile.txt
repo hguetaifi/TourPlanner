@@ -1,0 +1,15 @@
+2023-07-08 18:27:51,850 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 18:27:55,022 [1] INFO  TourPlanner.App - Getting All Tours
+2023-07-08 18:29:46,045 [1] ERROR TourPlanner.App - Error reading file: Der Prozess kann nicht auf die Datei "C:\Users\soha\source\repos\TourPlanner\bin\Debug\logfile.txt" zugreifen, da sie von einem anderen Prozess verwendet wird.
+2023-07-08 19:45:07,229 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 19:45:12,935 [1] INFO  TourPlanner.App - Getting All Tours
+2023-07-08 19:49:59,846 [1] INFO  TourPlanner.App - Adding Tour
+2023-07-08 19:50:03,958 [1] INFO  TourPlanner.App - Updating Tour
+2023-07-08 19:50:06,874 [1] INFO  TourPlanner.App - Getting All Tours
+2023-07-08 19:51:12,423 [1] ERROR TourPlanner.App - Couldn't Get Folder Path from Folder Dialogue
+2023-07-08 20:42:38,337 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 20:44:20,097 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 20:53:11,330 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 20:57:06,782 [1] INFO  TourPlanner.App - Getting All Tours
+2023-07-08 22:15:31,221 [1] INFO  TourPlanner.App - Application Startup
+2023-07-08 22:16:45,128 [1] INFO  TourPlanner.App - Getting All Tours
